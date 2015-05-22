@@ -7,8 +7,8 @@ FROM strongloop/node
 # and slc commands
 
 # It is common to copy your current
-ADD . /home/strongloop/app
-WORKDIR /home/strongloop/app
+ADD . /home/strongloop/medici-roar
+WORKDIR /home/strongloop/medici-roar
 RUN npm install
 ENV NODE_ENV production
 CMD [ "slc", "run", "." ]
