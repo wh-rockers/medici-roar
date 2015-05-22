@@ -1,42 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>LoopBack Angular example</title>
+<html ng-app="StarterApp">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>武汉极客圈</title>
 
-    <!-- Bootstrap -->
-    <link href="vendor/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
-    <link href="css/styles.css" rel="stylesheet">
+  <link href="vendor/angular-material/angular-material.min.css" rel="stylesheet">
+  <style>
+    .menuBtn {
+      background-color: transparent;
+      border: none;
+      margin-left: 16px;
+    }
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-  <body ng-app="app">
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="#">LoopBack Angular example</a>
-        </div>
-      </div>
-    </div>
+    md-list .md-button {
+      color: inherit;
+      text-align: left;
+      width: 100%;
+    }
+  </style>
+</head>
+<body layout="column" ng-controller="AppCtrl">
 
-    <div class="container">
-      <div ui-view></div>
-    </div>
+<md-toolbar layout="row">
+  <button ng-click="toggleSidenav('left')" hide-gt-sm class="md-icon-button menuBtn">
+    <span class="md-visually-hidden">Menu</span>
+  </button>
+  <h1 class="md-toolbar-tools" layout-align-gt-sm="center">Hello World</h1>
+</md-toolbar>
+<div layout="row" flex>
+  <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left"
+              md-is-locked-open="$mdMedia('gt-sm')">
 
-    <script src="vendor/jquery/dist/jquery.js"></script>
-    <script src="vendor/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="vendor/angular/angular.js"></script>
-    <script src="vendor/angular-resource/angular-resource.js"></script>
-    <script src="vendor/angular-ui-router/release/angular-ui-router.js"></script>
-    <script src="js/services/lb-services.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/controllers/todo.js"></script>
-  </body>
+  </md-sidenav>
+  <div layout="column" flex id="content">
+    <md-content layout="column" flex class="md-padding">
+
+    </md-content>
+  </div>
+</div>
+
+<script src="vendor/angular/angular.min.js"></script>
+<script src="vendor/angular-animate/angular-animate.min.js"></script>
+<script src="vendor/angular-aria/angular-aria.min.js"></script>
+<script src="vendor/angular-material/angular-material.min.js"></script>
+<script>
+  var app = angular.module('StarterApp', ['ngMaterial']);
+
+  app.controller('AppCtrl', ['$scope', '$mdSidenav', function ($scope, $mdSidenav) {
+    $scope.toggleSidenav = function (menuId) {
+      $mdSidenav(menuId).toggle();
+    };
+
+  }]);
+</script>
+</body>
 </html>
