@@ -9,6 +9,6 @@ FROM strongloop/node
 # It is common to copy your current
 ADD . /home/strongloop/medici-roar
 WORKDIR /home/strongloop/medici-roar
-RUN npm install
+# RUN npm install
 ENV NODE_ENV production
 CMD [ "slc", "run", "." ]
